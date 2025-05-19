@@ -1,5 +1,5 @@
 {
-  "name": "fastify-wsapi",
+  "name": "fastify-wsapi-plugin",
   "version": "0.1.0",
   "description": "Fastify WebSockets API plugin",
   "main": "index.js",
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MyNameIsNeXTSTEP/fastify-wsapi.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "fastify",
