@@ -1,6 +1,6 @@
 {
   "name": "fastify-wsapi-plugin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Fastify WebSockets API plugin",
   "main": "index.js",
   "scripts": {
