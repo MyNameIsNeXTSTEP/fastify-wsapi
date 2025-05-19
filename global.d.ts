@@ -1,15 +1,11 @@
-import { type TDbConnection } from '@db';
-import { type TSessionActions } from '@lib/session';
 import type { WebSocket } from 'ws';
-import type { WSMessageSchema, WSMessage } from '@plugins/ws-schema-validator';
 import { type ErrorObject } from 'ajv';
-
 
 export interface WSRegistryEntry {
   handler: TWSHandler;
   schema: wsApi.WSMessageSchema;
 }
-declare module "fastify" {
+declare module 'fastify' {
   export interface FastifyInstance<
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     HttpServer = Server,
