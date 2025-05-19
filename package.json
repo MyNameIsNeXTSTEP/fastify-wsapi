@@ -1,0 +1,25 @@
+{
+  "name": "fastify-wsapi",
+  "version": "0.1.0",
+  "description": "Fastify WebSockets API plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyNameIsNeXTSTEP/fastify-wsapi.git"
+  },
+  "keywords": [
+    "fastify",
+    "plugin",
+    "websocket",
+    "api"
+  ],
+  "author": "Gadzhiev Islam (gadzhievislam20@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MyNameIsNeXTSTEP/fastify-wsapi/issues"
+  },
+  "homepage": "https://github.com/MyNameIsNeXTSTEP/fastify-wsapi#readme"
+}
