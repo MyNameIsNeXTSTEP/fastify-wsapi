@@ -1,0 +1,6 @@
+node_modules
+.env
+.vscode
+.nvimlog
+.vimlog
+.DS_store

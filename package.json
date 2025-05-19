@@ -19,10 +19,21 @@
     "websocket",
     "api"
   ],
+  "types": "global.d.ts",
   "author": "Gadzhiev Islam (gadzhievislam20@gmail.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MyNameIsNeXTSTEP/fastify-wsapi/issues"
   },
-  "homepage": "https://github.com/MyNameIsNeXTSTEP/fastify-wsapi#readme"
+  "homepage": "https://github.com/MyNameIsNeXTSTEP/fastify-wsapi#readme",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "fastify": "^5.3.3",
+    "fastify-plugin": "^5.0.1",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.19",
+    "@types/ws": "^8.18.1"
+  }
 }
