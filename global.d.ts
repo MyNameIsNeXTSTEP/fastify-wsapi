@@ -1,6 +1,42 @@
-/**
- * @todo Remove "no-explicit-any" and implement proper types for the api
- */
+import { type TDbConnection } from '@db';
+import { type TSessionActions } from '@lib/session';
+import type { WebSocket } from 'ws';
+import type { WSMessageSchema, WSMessage } from '@plugins/ws-schema-validator';
+import { type ErrorObject } from 'ajv';
+
+
+export interface WSRegistryEntry {
+  handler: TWSHandler;
+  schema: wsApi.WSMessageSchema;
+}
+declare module "fastify" {
+  export interface FastifyInstance<
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    HttpServer = Server,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    HttpRequest = IncomingMessage,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    HttpResponse = ServerResponse
+  > {
+    /**
+     * Here we declare decorated values for the `fastify.decorate()`
+     */
+    validateWSMessage: (
+      message: wsApi.WSMessage | wsApi.WSParams,
+      schema: object
+    ) => { valid: boolean; data?: wsApi.WSMessage; errors?: null | ErrorObject[] };
+    validateWSResponse: (
+      response: wsApi.WSResponse,
+      schema: object
+    ) => { valid: boolean; data?: wsApi.WSResponse; errors?: null | ErrorObject[] };
+    wsRegistry: {
+      register: (method: string, handler: WSHandler, schema: WSMessageSchema) => void;
+      get: (method: string) => WSRegistryEntry | undefined;
+      has: (method: string) => boolean;
+      process: (message: WSMessage, socket: WebSocket, request: FastifyRequest) => Promise<WSResponse>;
+    };
+  }
+}
 declare global {
   namespace wsApi {
     type WSParams = Record<string, object> | undefined;
