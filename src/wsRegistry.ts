@@ -1,6 +1,7 @@
 import fp from 'fastify-plugin';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import type { WebSocket } from 'ws';
+import { type ErrorObject } from 'ajv/dist/types';
 
 type TWSHandler = (
   message: wsApi.WSMessage,
@@ -57,14 +58,29 @@ const wsRegistryPLugin = fp(async function (fastify: FastifyInstance) {
       }
       try {
         const result = await entry.handler(message, socket, request);
-        const responseValidation = fastify.validateWSResponse(result, entry.schema.response);
+        let responseValidation = {} as {
+          valid: boolean;
+          data?: wsApi.WSResponse;
+          errors?: null | ErrorObject[];
+        }
+        /**
+         * Early return if its the error response object
+         */
+        if ('error' in result) {
+          return {
+            id: message.id,
+            code: result.code,
+            error: result.error,
+          };
+        }
+        responseValidation = fastify.validateWSResponse(result, entry.schema.response);
         if (!responseValidation.valid) {
           console.error('Response validation failed', responseValidation.errors);
           return {
             id: message.id,
             error: {
               code: 500,
-              message: 'Internal server error',
+              message: responseValidation.errors,
             },
           };
         }
