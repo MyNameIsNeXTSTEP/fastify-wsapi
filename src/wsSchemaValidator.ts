@@ -1,14 +1,17 @@
 import fp from 'fastify-plugin';
 import type { FastifyInstance } from 'fastify';
 import Ajv, { type AnySchema } from 'ajv';
+import addFormats from 'ajv-formats';
 
 const wsSchemaValidationPLugin = fp(async function (fastify: FastifyInstance) {
-  const ajv = new Ajv({
-    removeAdditional: true,
-    useDefaults: true,
-    coerceTypes: true,
-    allErrors: true,
-  });
+  const ajv = addFormats(
+    new Ajv({
+      removeAdditional: true,
+      useDefaults: true,
+      coerceTypes: true,
+      allErrors: true,
+    })
+  );
 
   /**
    * Register schemas from Fastify instance
