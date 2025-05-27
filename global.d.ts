@@ -32,7 +32,11 @@ declare module 'fastify' {
       process: (message: WSMessage, socket: WebSocket, request: FastifyRequest) => Promise<WSResponse>;
     };
   }
-}
+};
+
+export const wsRegistry: (fastify: FastifyInstance) => Promise<void>;
+export const wsSchemaValidator: (fastify: FastifyInstance) => Promise<void>;
+
 declare global {
   namespace wsApi {
     type WSParams = Record<string, object> | undefined;
