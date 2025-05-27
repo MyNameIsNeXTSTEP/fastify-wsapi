@@ -2,16 +2,19 @@
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "target": "ES2022",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "noEmit": false,
     "outDir": "./dist",
     "lib": [
       "ES2022"
     ],
-    "module": "ESNext",
-    "target": "ESNext",
     "composite": true,
     "skipLibCheck": true,
     "allowJs": true,
-    "noEmit": true,
     "incremental": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -19,9 +22,7 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "isolatedModules": true,
   },
   "include": [
@@ -33,5 +34,4 @@
   "exclude": [
     "node_modules"
   ],
-  "files": []
 }

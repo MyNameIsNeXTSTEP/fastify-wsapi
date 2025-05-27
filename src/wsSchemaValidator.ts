@@ -23,6 +23,7 @@ const wsSchemaValidationPLugin = fp(async function (fastify: FastifyInstance) {
   /**
    * Validate incoming message
    */
+  // @ts-ignore
   fastify.decorate('validateWSMessage', (message: wsApi.WSMessage | wsApi.WSParams, schema: object) => {
     const validate = ajv.compile(schema);
     const valid = validate(message);

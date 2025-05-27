@@ -1,2 +1,7 @@
-export { default as wsRegistry} from './src/wsRegistry';
-export { default as wsSchemaValidator } from './src/wsSchemaValidator';
+import wsRegistry from './dist/src/wsRegistry.js';
+import wsSchemaValidator from './dist/src/wsSchemaValidator.js';
+
+export {
+  wsRegistry,
+  wsSchemaValidator,
+};
